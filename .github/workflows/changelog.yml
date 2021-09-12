@@ -18,12 +18,12 @@ jobs:
         uses: loopwerk/tag-changelog@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: create changelog
         run: echo "${{ steps.changelog.outputs.changelog }}" > CHANGELOG.md
       - uses: EndBug/add-and-commit@v7.3.0
         with:
-          message: Show GitHub logo
+          message: "docs: Update ChangeLog"
           committer_name: GitHub Actions
           committer_email: github-actions[bot]@users.noreply.github.com
           push: true
