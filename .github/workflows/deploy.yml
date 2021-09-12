@@ -1,0 +1,18 @@
+name: Build and Deploy gh Pages
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy-to-gh:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: update gh page
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }} # see the Configuration section for how you can create secrets
+        build_configuration: production 
+        base_href: /aboutme/  
+        deploy_branch: gh-pages # The branch the action should deploy to.
+        angular_dist_build_folder: public # The folder where your project is supposed to be after running ng build by the action.

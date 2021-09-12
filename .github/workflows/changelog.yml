@@ -1,0 +1,28 @@
+name: Create Changelog
+on: 
+  push:
+    branches:
+      - changes
+
+jobs:
+  create-changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Create changelog text
+        id: changelog
+        uses: loopwerk/tag-changelog@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          exclude_types: other,doc,chore
+      - name: create changelog
+        run: echo "${{ steps.changelog.outputs.changelog }}" > CHANGELOG.md
+      - uses: EndBug/add-and-commit@v7.3.0
+        with:
+          message: Show GitHub logo
+          committer_name: GitHub Actions
+          committer_email: github-actions[bot]@users.noreply.github.com
+          push: true
