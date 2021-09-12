@@ -1,5 +1,9 @@
 name: Create Changelog
-on: push
+on: 
+  push:
+    branches:
+      - main
+      - changes
 
 jobs:
   create-changelog:
