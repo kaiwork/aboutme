@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  menuActive: boolean =  false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle(){
+    this.menuActive = !this.menuActive;
   }
 
 }
