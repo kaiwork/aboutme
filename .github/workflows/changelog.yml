@@ -2,7 +2,7 @@ name: Create Changelog
 on: 
   push:
     branches:
-      - main
+      - master
       - changes
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         uses: loopwerk/tag-changelog@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          exclude_types: other,doc,chore
+          
       - name: create changelog
         run: echo "${{ steps.changelog.outputs.changelog }}" > CHANGELOG.md
       - uses: EndBug/add-and-commit@v7.3.0
